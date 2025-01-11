@@ -1,0 +1,56 @@
+#include <Modulino.h>
+ModulinoBuzzer buzz;
+ModulinoPixels led;
+ModulinoDistance distance;
+
+
+int lum = 100; 
+int frequenza = 1000;
+int durata = 800;
+int dist = distance.get();
+
+void setup(){
+
+Modulino.begin();
+buzz.begin();
+led.begin();
+distance.begin();
+
+}
+
+
+void loop(){
+
+if (distance.available()) {
+int dist = distance.get();
+if (dist > 0 && dist <= 200) {
+
+buzz.tone(frequenza,durata);
+led.set(0,RED,lum);
+led.set(1,RED,lum);
+led.set(2,RED,lum);
+led.set(3,RED,lum);
+led.set(4,RED,lum);
+led.set(5,RED,lum);
+led.set(6,RED,lum);
+led.set(7,RED,lum);
+led.show();
+delay(800);
+
+
+led.clear();
+led.show();
+delay(800);
+
+}
+}
+
+else {
+        
+        led.clear();
+        led.show();
+        delay(100);
+    }
+
+
+}
